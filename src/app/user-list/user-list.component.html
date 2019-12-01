@@ -1,0 +1,63 @@
+<div class="ui icon message">
+  <i class="table icon"></i>
+  <div class="content">
+    <div class="header">{{pageTitle}}</div>
+    <p>Liste incluant la liste des compétences et le niveau global</p>
+  </div>
+</div>
+<div class="ui relaxed grid">
+  <div class="three column row">
+    <div class="column">
+      <button class="ui primary button" (click)='toogleNotes()'>{{ showNotes ? 'Cacher' : 'Montrer' }} les notes</button>
+    </div>
+    <div class="column">
+      <div class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Nom d'utilisateur..." [(ngModel)]="userFilter">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
+    </div>
+    <div class="column">
+      <a class="ui image label">
+        Filtre: <img src="/assets/images/result.png">
+        {{userFilter | uppercase}}
+      </a>
+    </div>
+  </div>
+</div>
+<table class="ui celled table" *ngIf='users && users.length'>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nom</th>
+        <th>Age</th>
+        <th>Poste</th>
+        <th>Compétences</th>
+        <th *ngIf='showNotes'>Note</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of filteredUsers">
+        <td>
+          <img [style.width.px]='imageSize' title={{user.userName}} [src]='user.userImage' />
+        </td>
+        <td>{{user.userName | uppercase}}</td>
+        <td>{{user.userAge}}</td>
+        <td>{{user.userJob}}</td>
+        <td [innerHTML]="user.userSkills | convertToList"></td>
+        <td *ngIf='showNotes'>{{user.userRating}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="ui error message" *ngIf="!users || !users.length">
+    <i class="close icon"></i>
+    <div class="header">
+      Aucun utilisateur disponible
+    </div>
+    <ul class="list">
+      <li>Modifier votre recherche</li>
+      <li>Contacter votre administrateur</li>
+    </ul>
+  </div>
