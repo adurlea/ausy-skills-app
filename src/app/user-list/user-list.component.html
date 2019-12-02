@@ -47,11 +47,11 @@
         <td>{{user.userAge}}</td>
         <td>{{user.userJob}}</td>
         <td [innerHTML]="user.userSkills | convertToList"></td>
-        <td *ngIf='showNotes'>{{user.userRating}}</td>
+        <td *ngIf='showNotes'><app-user-rating [rating]='user.userRating' [age]='user.userAge'></app-user-rating></td>
       </tr>
     </tbody>
   </table>
-  <div class="ui error message" *ngIf="!users || !users.length">
+  <div class="ui error message" *ngIf="!filteredUsers || !filteredUsers.length">
     <i class="close icon"></i>
     <div class="header">
       Aucun utilisateur disponible
