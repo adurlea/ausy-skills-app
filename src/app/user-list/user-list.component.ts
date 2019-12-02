@@ -3,7 +3,6 @@ import { IUser } from '../user/user';
 import { UserService } from '../user/user.service';
 
 @Component({
-  selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
@@ -16,11 +15,18 @@ export class UserListComponent implements OnInit {
 
   filteredUsers: IUser[];
   users: IUser[];
+  errorMessage: string;
 
   constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.users = this.userService.getUsers();
+    this.userService.getUsers().subscribe({
+      next: users => {
+        this.users = users;
+        this.filteredUsers = this.users;
+      },
+      error: err => this.errorMessage = err
+    });
     this.filteredUsers = this.users;
   }
 
