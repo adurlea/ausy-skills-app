@@ -8,12 +8,21 @@ import { tap, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  userUrl: string = 'http://localhost:3000/users';
+  baseUrl: string = 'http://localhost:3000/';
+  usersPathParam: string = 'users';
+  userPathParam: string = 'user';
 
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<IUser []> {
-    return this.httpClient.get<IUser []>(this.userUrl).pipe(
+    return this.httpClient.get<IUser []>(`${this.baseUrl}${this.usersPathParam}`).pipe(
+      tap(datat => console.log('All: ' + JSON.stringify(datat))),
+      catchError(this.handleError)
+    );
+  }
+
+  getUser(id: string): Observable<IUser> {
+    return this.httpClient.get<IUser>(`${this.baseUrl}${this.userPathParam}/${id}`).pipe(
       tap(datat => console.log('All: ' + JSON.stringify(datat))),
       catchError(this.handleError)
     );

@@ -43,7 +43,7 @@
         <td>
           <img [style.width.px]='imageSize' title={{user.userName}} [src]='user.userImage' />
         </td>
-        <td>{{user.userName | uppercase}}</td>
+        <td><a [routerLink]="['/users', user.userId]">{{user.userName | uppercase}}</a></td>
         <td>{{user.userAge}}</td>
         <td>{{user.userJob}}</td>
         <td [innerHTML]="user.userSkills | convertToList"></td>
