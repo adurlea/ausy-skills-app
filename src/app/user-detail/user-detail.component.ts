@@ -10,7 +10,7 @@ import { IUser } from '../user/user';
 })
 export class UserDetailComponent implements OnInit {
   userId: string;
-  user: IUser;
+  currentUser: IUser;
   errorMessage: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
@@ -18,7 +18,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.userService.getUser(this.userId).subscribe({
-      next: user => this.user = user,
+      next: user => this.currentUser = user,
       error: err => this.errorMessage = err
     });
 

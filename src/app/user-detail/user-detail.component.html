@@ -1,20 +1,21 @@
-<div class="ui card">
+<div class="ui card" *ngIf='currentUser'> <!-- Appel asynch to get user so we
+                                      cheeck to see if user is recupered before showing the page-->
   <div class="image">
-    <img src="{{user.userImage}}">
+    <img [src]='currentUser.userImage'>
   </div>
   <div class="content">
-    <a class="header">{{user.userName}}</a>
+    <a class="header">{{currentUser.userName}}</a>
     <div class="meta">
-      <span class="date">{{user.userAge}}</span>
+      <span class="date">{{currentUser.userAge}}</span>
     </div>
     <div class="description">
-      {{user.userName}} travaille chez Ausy en tant que {{user.userJob | lowercase}}
+      {{currentUser.userName}} travaille chez Ausy en tant que {{currentUser.userJob | lowercase}}
     </div>
   </div>
   <div class="extra content">
     <a>
       <i class="user icon"></i>
-      Score {{user.userRating}}
+      Score {{currentUser.userRating}}
     </a>
   </div>
 </div>
