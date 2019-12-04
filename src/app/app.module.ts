@@ -10,6 +10,7 @@ import { ConvertToList } from './pipes/convert-to-list.pipes';
 import { UserRatingComponent } from './shared/user-rating.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { UserDetailGuard } from './user-detail/user-detail.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'users', component: UserListComponent },
-      { path: 'users/:id', component: UserDetailComponent },
+      { path: 'users/:id',
+        canActivate: [UserDetailGuard],
+        component: UserDetailComponent},
       { path: 'welcome', component: WelcomeComponent },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
       { path: '**', redirectTo: 'welcome', pathMatch: 'full' }

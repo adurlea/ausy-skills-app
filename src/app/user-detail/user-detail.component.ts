@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { IUser } from '../user/user';
 
@@ -13,7 +13,8 @@ export class UserDetailComponent implements OnInit {
   currentUser: IUser;
   errorMessage: string;
 
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService,
+    private currentRouter: Router) { }
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
@@ -25,4 +26,11 @@ export class UserDetailComponent implements OnInit {
     console.log('UserID: ' + this.userId);
   }
 
+  onBack(): void {
+    this.currentRouter.navigate(['/users']);
+  }
+
+  onHome(): void {
+    this.currentRouter.navigate(['/welcome']);
+  }
 }
