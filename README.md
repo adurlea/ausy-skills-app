@@ -2,6 +2,9 @@
 
 This is a simple application build along with the Angular cours made by AUSY.
 This apps manage the Ausy's employees skills 
+To start up the server data for getting the users and user detail you have to:
+- navigate to userRestApi
+- run in a terminal the command: npm run start
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.19.
 
