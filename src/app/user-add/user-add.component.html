@@ -1,0 +1,140 @@
+<form class="ui form" #form="ngForm">
+  <div class="field">
+    <label for="name">Nom</label>
+    <input type="text" id="name" name="name" placeholder="Nom" ngModel/>
+  </div>
+  <div class="field">
+    <label for="age">Age</label>
+    <input type="number" name="age" id="age" placeholder="Age" ngModel/>
+  </div>
+  <div class="field">
+    <label for="job">Poste</label>
+    <select class="ui fluid dropdown" name="job" id="job" ngModel>
+      <option value="">Poste...</option>
+      <option value="CDP">Chef de projet</option>
+      <option value="ARC">Architecte</option>
+      <option value="DEV">D&eacute;veloppeur</option>
+      <option value="REC">Testeur</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="rating">Note</label>
+    <input type="range" name="rating" id="rating"
+            placeholder="Note" min="0" max="5" ngModel/>
+  </div>
+  <h4 class="ui dividing header">Comp&eacute;tences</h4>
+  <div class="inline fields">
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="jee" id="jee" ngModel/>
+          <label for="jee">JEE</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="java" id="java" ngModel/>
+          <label for="java">Java</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="soa" id="soa" ngModel/>
+          <label for="soa">SOA</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="javascript" id="javascript" ngModel/>
+          <label for="javascript">Javascript</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="angular" id="angular" ngModel/>
+          <label for="angular">Angular</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="inline fields">
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="junit" id="junit" ngModel/>
+          <label for="junit">Junit</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="selenium" id="selenium" ngModel/>
+          <label for="selenium">Selenium</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="squash" id="squash" ngModel/>
+          <label for="java">Squash</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="robot" id="robot" ngModel/>
+          <label for="robot">Robot Framework</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="inline fields">
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="cpp" id="cpp" ngModel/>
+          <label for="cpp">C++</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="net" id="net" ngModel/>
+          <label for="net">.Net</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="scrum" id="scrum" ngModel/>
+          <label for="scrum">Scrum</label>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <div class="ui left compact segment">
+        <div class="ui toggle checkbox">
+          <input type="checkbox" name="kanban" id="kanban" ngModel/>
+          <label for="kanban">Kanban</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="ui primary button">
+    Save
+  </button>
+</form>
+{{form.value | json}}
