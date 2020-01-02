@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
       <div class="ui pointing menu">
         <a class="item" [routerLink]="['/welcome']">Accueil</a>
         <a class="item" [routerLink]="['/users']">Liste des utilisateurs</a>
+        <a class="item" [routerLink]="['/userAdd']">Ajout utilisateur</a>
       </div>
       <router-outlet></router-outlet>
     </div>

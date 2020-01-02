@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IUser } from './user';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { IUserNew } from './user-new';
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class UserService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
+  }
+
+  postNewUser(newUser: IUserNew): Observable<IUserNew> {
+    return of(newUser);
   }
 }

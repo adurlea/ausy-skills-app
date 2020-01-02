@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUserNew } from '../user/user-new';
+import { NgForm } from '@angular/forms';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-user-add',
@@ -8,15 +10,15 @@ import { IUserNew } from '../user/user-new';
 })
 export class UserAddComponent implements OnInit {
   newUser: IUserNew = {
-    name: 'Ausy',
-    age: 35,
-    job: 'ARC',
-    rating: 4,
-    jee: true,
-    java: true,
+    name: null,
+    age: null,
+    job: null,
+    rating: 0,
+    jee: false,
+    java: false,
     soa: false,
     javascript: false,
-    angular: true,
+    angular: false,
     junit: false,
     selenium: false,
     squash: false,
@@ -26,9 +28,24 @@ export class UserAddComponent implements OnInit {
     scrum: false,
     kanban: false
   };
-  constructor() { }
+  errorMessage: string;
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      console.log('Form posted: ' + form.valid);
+      this.userService.postNewUser(form.value).subscribe({
+        next: user => this.newUser = user,
+        error: err => this.errorMessage = err
+      });
+
+      console.log('success: ' + JSON.stringify(this.newUser));
+    } else {
+      console.log('Form posted: ' + form.valid);
+    }
   }
 
 }

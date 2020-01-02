@@ -1,29 +1,47 @@
-<form class="ui form" #form="ngForm">
+<form class="ui form" #form="ngForm" (ngSubmit)="onSubmit(form)">
   <div class="field">
     <label for="name">Nom</label>
     <input type="text" id="name" name="name" placeholder="Nom"
-          [(ngModel)]='newUser.name'/>
+          [(ngModel)]='newUser.name' required #nameField="ngModel"
+          [class.user-field-error]="form.submitted && nameField.invalid"/>
+    <div [hidden]="!form.submitted || nameField.valid" class="ui red pointing label">
+      Merci d'entrer un nom
+    </div>
   </div>
   <div class="field">
     <label for="age">Age</label>
     <input type="number" name="age" id="age" placeholder="Age"
-          [(ngModel)]='newUser.age'/>
+          [(ngModel)]='newUser.age'required #ageField="ngModel"
+          pattern="(1[89]|[2-5][0-9]|6[0-5])"
+          [class.user-field-error]="form.submitted && ageField.invalid"/>
+    <div [hidden]="!form.submitted || ageField.valid" class="ui red pointing label">
+      Merci d'entrer un age entre 18 et 65 ans
+    </div>
   </div>
   <div class="field">
     <label for="job">Poste</label>
     <select class="ui fluid dropdown" name="job" id="job"
-          [(ngModel)]='newUser.job'>
+          [(ngModel)]='newUser.job' required #jobField="ngModel"
+          [class.user-field-error]="form.submitted && jobField.invalid">
       <option value="">Poste...</option>
       <option value="CDP">Chef de projet</option>
       <option value="ARC">Architecte</option>
       <option value="DEV">D&eacute;veloppeur</option>
       <option value="REC">Testeur</option>
     </select>
+    <div [hidden]="!form.submitted || jobField.valid" class="ui red pointing label">
+      Merci d'entrer un poste
+    </div>
   </div>
   <div class="field">
     <label for="rating">Note</label>
     <input type="range" name="rating" id="rating" placeholder="Note"
-            min="0" max="5" [(ngModel)]='newUser.rating'/>
+            [(ngModel)]='newUser.rating'required #ratingField="ngModel"
+            pattern="^[1-9]\d*$" max="5"
+            [class.user-field-error]="form.submitted && ratingField.invalid"/>
+  </div>
+  <div [hidden]="!form.submitted || ratingField.valid" class="ui red pointing label">
+    Merci d'entrer une note sup&eacute;rieure à 0
   </div>
   <h4 class="ui dividing header">Comp&eacute;tences</h4>
   <div class="inline fields">
@@ -153,4 +171,3 @@
     Save
   </button>
 </form>
-{{newUser | json}}
