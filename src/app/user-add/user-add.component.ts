@@ -33,7 +33,7 @@ export class UserAddComponent implements OnInit {
     } else {
       console.log('Form valid: ' + form.valid);
       this.postError = true;
-      this.postErrorMesssage = 'Merci de corriger the formulaire avant de soumettre.';
+      this.postErrorMesssage = 'Merci de corriger le formulaire avant de soumettre.';
     }
   }
 
@@ -68,7 +68,7 @@ export class UserAddComponent implements OnInit {
       userId: null,
       name: null,
       age: null,
-      job: null,
+      job: 'CDP',
       rating: 0,
       jee: false,
       java: false,

@@ -20,25 +20,24 @@
   </div>
   <div class="field">
     <label for="job">Poste</label>
-    <select class="ui fluid dropdown" name="job" id="job"
-          [(ngModel)]='newUser.job' required #jobField="ngModel"
-          [class.user-field-error]="form.submitted && jobField.invalid && !postSuccess">
-      <option value="">Poste...</option>
-      <option value="CDP">Chef de projet</option>
-      <option value="ARC">Architecte</option>
-      <option value="DEV">D&eacute;veloppeur</option>
-      <option value="REC">Testeur</option>
-    </select>
-    <div [hidden]="!form.submitted || jobField.valid || postSuccess" class="ui red pointing label">
-      Merci d'entrer un poste
+    <div class="btn-group">
+      <label class="btn btn-primary" [(ngModel)]="newUser.job" name="job" id="job"
+             btnRadio="CDP" tabindex="0" role="button">Chef de projet</label>
+      <label class="btn btn-primary" [(ngModel)]="newUser.job" name="job" id="job"
+             btnRadio="ARC" tabindex="0" role="button">Architecte</label>
+      <label class="btn btn-primary" [(ngModel)]="newUser.job" name="job" id="job"
+             btnRadio="DEV" tabindex="0" role="button">D&eacute;veloppeur</label>
+      <label class="btn btn-primary" [(ngModel)]="newUser.job" name="job" id="job"
+             btnRadio="REC" tabindex="0" role="button">Testeur</label>
     </div>
   </div>
   <div class="field">
     <label for="rating">Note</label>
     <input type="range" name="rating" id="rating" placeholder="Note"
             [(ngModel)]='newUser.rating'required #ratingField="ngModel"
-            pattern="^[1-9]\d*$" max="5"
+            pattern="^[1-9]\d*$" max="5" step="0.1"
             [class.user-field-error]="form.submitted && ratingField.invalid && !postSuccess"/>
+            <span>{{ratingField.value}}</span>
   </div>
   <div [hidden]="!form.submitted || ratingField.valid || postSuccess" class="ui red pointing label">
     Merci d'entrer une note sup&eacute;rieure à 0
@@ -167,16 +166,12 @@
       </div>
     </div>
   </div>
-  <div class="field">
-    <div [hidden]="!form.submitted || !postError || postSuccess" class="ui red label">
-      {{postErrorMesssage}}
-    </div>
-  </div>
-  <div class="field">
-    <div [hidden]="!form.submitted || !postSuccess" class="ui green label">
-      {{postSuccessMesssage}}
-    </div>
-  </div>
+  <alert type="danger" [isOpen]='postError' dismissible="true">
+    {{postErrorMesssage}}
+  </alert>
+  <alert type="success" [isOpen]="postSuccess" [dismissOnTimeout]="5000" dismissible="true">
+    {{postSuccessMesssage}}
+  </alert>
   <div class="field">
     <button class="ui primary button">
       Save
