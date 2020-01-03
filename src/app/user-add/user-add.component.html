@@ -37,7 +37,7 @@
             [(ngModel)]='newUser.rating'required #ratingField="ngModel"
             pattern="^[1-9]\d*$" max="5" step="0.1"
             [class.user-field-error]="form.submitted && ratingField.invalid && !postSuccess"/>
-            <span>{{ratingField.value}}</span>
+            <p>{{ratingField.value}}</p>
   </div>
   <div [hidden]="!form.submitted || ratingField.valid || postSuccess" class="ui red pointing label">
     Merci d'entrer une note sup&eacute;rieure à 0
