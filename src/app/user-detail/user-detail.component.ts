@@ -14,13 +14,13 @@ export class UserDetailComponent implements OnInit {
   errorMessage: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService,
-    private currentRouter: Router) { }
+              private currentRouter: Router) { }
 
   ngOnInit() {
     this.userId = this.route.snapshot.paramMap.get('id');
     this.userService.getUser(this.userId).subscribe({
-      next: user => this.currentUser = user,
-      error: err => this.errorMessage = err
+      next: user => this.handleGetSuccess(user),
+      error: err => this.handleGetError(err)
     });
 
     console.log('UserID: ' + this.userId);
@@ -32,5 +32,19 @@ export class UserDetailComponent implements OnInit {
 
   onHome(): void {
     this.currentRouter.navigate(['/welcome']);
+  }
+
+  private handleGetSuccess(user: IUser) {
+    if (!user || JSON.stringify(user) === '{}') {
+      alert('Invalide user Id: ' + this.userId);
+      this.currentRouter.navigate(['/users']);
+    } else {
+      this.currentUser = user;
+    }
+  }
+
+  private handleGetError(err: any) {
+    alert('Error getting user: ' + err);
+    this.currentRouter.navigate(['/users']);
   }
 }

@@ -195,7 +195,7 @@ exports.create_a_user = function (req, res) {
 
   db.run(insert, [req.body.name, req.body.age, job, skills, req.body.rating, "assets/images/bob.jpg"]);
 
-  var result = res.json({ name: req.body.name, age: req.body.age, job: job, rating: req.body.rating });
+  var result = res.json({ userName: req.body.name, userAge: req.body.age, userJob: job, userRating: req.body.rating });
 
   return result;
 };

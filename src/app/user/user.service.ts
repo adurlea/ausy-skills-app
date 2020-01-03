@@ -12,6 +12,7 @@ export class UserService {
   baseUrl: string = 'http://localhost:3000/';
   usersPathParam: string = 'users';
   userPathParam: string = 'user';
+  newUserPathParam: string = 'newuser';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -29,6 +30,13 @@ export class UserService {
     );
   }
 
+  postNewUser(newUser: IUserNew): Observable<IUser> {
+    return this.httpClient.post<IUser>(`${this.baseUrl}${this.newUserPathParam}`, newUser).pipe(
+      tap(data => console.log('New User: ' + JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
   handleError(err: HttpErrorResponse) {
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
@@ -40,9 +48,5 @@ export class UserService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  }
-
-  postNewUser(newUser: IUserNew): Observable<IUserNew> {
-    return of(newUser);
   }
 }
