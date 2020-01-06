@@ -9,10 +9,10 @@ import { IUserNew } from './user-new';
   providedIn: 'root'
 })
 export class UserService {
-  baseUrl: string = 'http://localhost:3000/';
-  usersPathParam: string = 'users';
-  userPathParam: string = 'user';
-  newUserPathParam: string = 'newuser';
+  baseUrl = 'http://localhost:3000/';
+  usersPathParam = 'users';
+  userPathParam = 'user';
+  newUserPathParam = 'newuser';
 
   constructor(private httpClient: HttpClient) { }
 

@@ -8,9 +8,9 @@ import { Component, OnChanges, Input } from '@angular/core';
 export class UserRatingComponent implements OnChanges {
   @Input() rating: number;
   @Input() age: number;
-  statusNormal: string = 'disabled';
-  statusEleve: string = 'disabled';
-  statusHP: string = 'disabled';
+  statusNormal = 'disabled';
+  statusEleve = 'disabled';
+  statusHP = 'disabled';
 
   constructor() { }
 

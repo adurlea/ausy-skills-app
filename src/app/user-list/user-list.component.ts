@@ -8,10 +8,10 @@ import { UserService } from '../user/user.service';
 })
 export class UserListComponent implements OnInit {
 
-  pageTitle: string = 'Liste des utilisateurs';
-  imageSize: number = 50;
-  showNotes: boolean = true;
-  _userFilter: string;
+  pageTitle = 'Liste des utilisateurs';
+  imageSize = 50;
+  showNotes = true;
+  currentUserFilter: string;
 
   filteredUsers: IUser[];
   users: IUser[];
@@ -31,11 +31,11 @@ export class UserListComponent implements OnInit {
   }
 
   get userFilter() {
-    return this._userFilter;
+    return this.currentUserFilter;
   }
 
   set userFilter(value: string) {
-    this._userFilter = value;
+    this.currentUserFilter = value;
     this.filteredUsers = this.performFilter(this.userFilter);
   }
 
