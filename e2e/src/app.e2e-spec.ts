@@ -10,7 +10,17 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ausy-skills-app app is running!');
+    expect(page.getTitleText()).toEqual('Application de gestion de compétences Ausy');
+  });
+
+  it('should display application title', () => {
+    page.navigateTo();
+    expect(page.getAppTitleText()).toEqual('Ausy Skills Application');
+  });
+
+  it('should display user list title', () => {
+    page.navigateToUrl('/users');
+    expect(page.getPageTitleByDivHeader()).toEqual('Liste des utilisateurs');
   });
 
   afterEach(async () => {

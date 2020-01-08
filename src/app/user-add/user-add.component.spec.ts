@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserAddComponent } from './user-add.component';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { AlertModule, AlertConfig } from 'ngx-bootstrap/alert';
+import { FormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('UserAddComponent', () => {
   let component: UserAddComponent;
@@ -8,6 +12,8 @@ describe('UserAddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ButtonsModule, AlertModule, FormsModule, HttpClientTestingModule],
+      providers: [AlertConfig],
       declarations: [ UserAddComponent ]
     })
     .compileComponents();

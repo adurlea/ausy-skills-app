@@ -1,5 +1,4 @@
 export interface IUserNew {
-  userId: number;
   name: string;
   age: number;
   job: string;

@@ -18,14 +18,14 @@ export class UserService {
 
   getUsers(): Observable<IUser []> {
     return this.httpClient.get<IUser []>(`${this.baseUrl}${this.usersPathParam}`).pipe(
-      tap(datat => console.log('All: ' + JSON.stringify(datat))),
+      tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   getUser(id: string): Observable<IUser> {
     return this.httpClient.get<IUser>(`${this.baseUrl}${this.userPathParam}/${id}`).pipe(
-      tap(datat => console.log('All: ' + JSON.stringify(datat))),
+      tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }

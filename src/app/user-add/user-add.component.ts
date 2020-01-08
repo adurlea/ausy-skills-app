@@ -65,7 +65,6 @@ export class UserAddComponent implements OnInit {
 
   private initNewUser(): IUserNew {
     return {
-      userId: null,
       name: null,
       age: null,
       job: 'CDP',
